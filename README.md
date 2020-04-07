@@ -153,7 +153,7 @@ Please use the [issue tracker](https://github.com/kpwhri/pcos-runrex/issues).
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* This work was funded as part of the [Sentinel Initiative](https://www.fda.gov/safety/fdas-sentinel-initiative).
+* This work has been funded by Bayer.
 
 
 
