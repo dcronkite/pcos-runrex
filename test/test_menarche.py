@@ -1,6 +1,6 @@
 import pytest
 
-from pcos_runrex.algo.menarche import MENARCHE_VALUE, VALUE_MENARCHE
+from pcos_runrex.algo.menarche import MENARCHE_AGE, AGE_MENARCHE, MENARCHE_GRADE, GRADE_MENARCHE
 
 
 @pytest.mark.parametrize(('text', 'value'), [
@@ -8,7 +8,7 @@ from pcos_runrex.algo.menarche import MENARCHE_VALUE, VALUE_MENARCHE
     ('menses irregular since onset at age 13', 13),
 ])
 def test_menarche_value(text, value):
-    m = MENARCHE_VALUE.matchgroup(text, 'age')
+    m = MENARCHE_AGE.matchgroup(text, 'age')
     assert int(m) == value
 
 
@@ -17,7 +17,22 @@ def test_menarche_value(text, value):
     ('13 yrs at onset of menses', 13),
 ])
 def test_value_menarche(text, value):
-    m = VALUE_MENARCHE.matchgroup(text, 'age')
+    m = AGE_MENARCHE.matchgroup(text, 'age')
     assert int(m) == value
 
 
+@pytest.mark.parametrize(('text', 'grade'), [
+    ('menarche in sixth grade', 'sixth grade'),
+    ('menses irregular since onset in 6th grade', '6th grade'),
+])
+def test_menarche_grade(text, grade):
+    m = MENARCHE_GRADE.matchgroup(text, 'grade')
+    assert m.strip() == grade
+
+
+@pytest.mark.parametrize(('text', 'grade'), [
+    ('was in grade 6 at onset of menses', 'grade 6'),
+])
+def test_grade_menarche(text, grade):
+    m = GRADE_MENARCHE.matchgroup(text, 'grade')
+    assert m.strip() == grade
