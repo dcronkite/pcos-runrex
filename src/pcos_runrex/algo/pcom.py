@@ -5,8 +5,7 @@ from runrex.terms import hypothetical, negation
 
 
 class PcomStatus(Status):
-    NONE = -1
-    EXPLORATORY = 1
+    EXPLORATORY = -1
     PCOS = 2
     MEASURE = 3
 

@@ -7,8 +7,7 @@ from runrex.text import Document
 
 
 class MenarchyStatus(Status):
-    NONE = -1
-    EXPLORATORY = 1
+    EXPLORATORY = -1
     FOUND_GRADE = 2
     FOUND_AGE = 3
     STRUCTURED = 4

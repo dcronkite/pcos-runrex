@@ -5,8 +5,7 @@ from runrex.terms import hypothetical, negation
 
 
 class HyperandrogenismStatus(Status):
-    NONE = -1
-    EXPLORATORY = 1
+    EXPLORATORY = -1
 
 
 EXPLORATORY = Pattern(
