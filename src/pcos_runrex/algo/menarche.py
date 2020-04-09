@@ -111,7 +111,7 @@ def _search_menarche(document: Document):
             continue
         for age, start, end in sentence.get_patterns(MENARCHE_AGE, AGE_MENARCHE, index='age'):
             _grade = find_subpattern(AT_GRADE, sentence.text[end:], 'grade')
-            yield MenarchyStatus.FOUND_AGE, sentence.text, _grade, age
+            yield MenarchyStatus.FOUND_AGE, sentence.text, age, _grade
         if sentence.last_found:
             continue
         for _, start, end in sentence.get_patterns(STRUCTURED):
