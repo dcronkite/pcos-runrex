@@ -7,16 +7,24 @@ from pcos_runrex.algo.menarche import MENARCHE_AGE, AGE_MENARCHE, MENARCHE_GRADE
     ('menarche at age 13', 13),
     ('menses irregular since onset at age 13', 13),
 ])
-def test_menarche_value(text, value):
+def test_menarche_numeric_age(text, value):
     m = MENARCHE_AGE.matchgroup(text, 'age')
     assert int(m) == value
+
+
+@pytest.mark.parametrize(('text', 'value'), [
+    ('age at first menses : 13 - 14 years', '13 - 14'),
+])
+def test_menarche_age(text, value):
+    m = MENARCHE_AGE.matchgroup(text, 'age')
+    assert m == value
 
 
 @pytest.mark.parametrize(('text', 'value'), [
     ('age 13 y.o. at first menses', 13),
     ('13 yrs at onset of menses', 13),
 ])
-def test_value_menarche(text, value):
+def test_age_numeric_menarche(text, value):
     m = AGE_MENARCHE.matchgroup(text, 'age')
     assert int(m) == value
 

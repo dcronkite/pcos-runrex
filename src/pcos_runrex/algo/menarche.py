@@ -33,7 +33,7 @@ STRUCTURED = Pattern(
 
 years_old = '(y o|years old|years?|yrs?|yrs old)'
 at_age = '(at age|around|at|age)'
-age_capture = r'(?P<age>\d+ ((-|/|or|to) (\d+|older|younger))?)'
+age_capture = r'(?P<age>\d+[^-/\w]*((-|/|or|to) (\d+|older|younger))?)'
 AT_AGE = re.compile(fr'{at_age}\W*{age_capture}', re.I)
 at_grade = '(in|(at)? (the)? (start|end) of)'
 
