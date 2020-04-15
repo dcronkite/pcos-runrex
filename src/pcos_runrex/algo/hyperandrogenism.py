@@ -55,8 +55,14 @@ ACNE_HANDOUT = Pattern(
 
 HIRSUTISM = Pattern(
     rf'('
+    rf'hirsutism'
+    rf')',
+    negates=negation_group,
+)
+
+BALDNESS = Pattern(
+    rf'('
     rf'alopecia'
-    rf'|hirsutism'
     rf'|hair loss'
     rf'|baldness'
     rf'|excess hair|hairy'
@@ -88,6 +94,10 @@ def _search_hyperandrogenism(document: Document):
             yield HyperandrogenismStatus.ACNE, sentence.text
         if ANDROGEN_EXCESS.matches(sentence):
             yield HyperandrogenismStatus.ANDROGEN_EXCESS, sentence.text
+        if HIRSUTISM.matches(sentence):
+            yield HyperandrogenismStatus.HIRSUTISM, sentence.text
+        if BALDNESS.matches(sentence):
+            yield HyperandrogenismStatus.BALDNESS, sentence.text
         if not sentence.any_found:
             yield HyperandrogenismStatus.EXPLORATORY, sentence.text
 
